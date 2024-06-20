@@ -16,3 +16,11 @@ export const pool = new pg.Pool({
     database:DB_NAME
 }
 )
+
+
+try{
+    await pool.query("SELECT NOW()")
+    console.log("Base de datos conectada exitosamente ")
+}catch (error){
+    console.log('Hay un error en la coneccion de la base de datos ' + error)
+}
