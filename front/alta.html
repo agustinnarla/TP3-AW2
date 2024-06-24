@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="./src/alta.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Alta de productos</title>
+</head>
+<body>
+    <header class="flex items-center justify-between px-4 py-3 bg-gray-900 text-white">
+        <h1 class="text-xl font-semibold">Alta de productos</h1>
+        <nav>
+            <a href="./index.html" class="text-gray-300 hover:text-white mr-4">Inicio</a>
+            <a href="./alta.html" class="text-gray-300 hover:text-white">Agregar producto</a>
+        </nav>
+    </header>
+    <main class="flex items-center justify-between px-4 py-8">
+        <form id="formulario" action="http://localhost:3001/index" method="POST" class="flex items-center space-x-4">
+            <input type="text" name="nombre" class="px-4 py-2 border border-gray-300 rounded-md" placeholder="Nombre">
+            <input type="text" name="marca" class="px-4 py-2 border border-gray-300 rounded-md" placeholder="Marca">
+            <input type="text" name="categoria" class="px-4 py-2 border border-gray-300 rounded-md" placeholder="Categoría">
+            <input type="number" name="stock" class="px-4 py-2 border border-gray-300 rounded-md" placeholder="Stock">
+            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Enviar</button>
+        </form>
+    </main>
+</body>
+</html>
