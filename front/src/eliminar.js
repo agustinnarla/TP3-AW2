@@ -7,27 +7,26 @@ function extraerParametro(url, parametro){
 }
 
 
-async function obtenerProducto() {  
+async function obtenerProducto() {
     try {
-        const id = extraerParametro(location.href, 'id')
-        const datosCrudos = await fetch(`http://localhost:3001/productos/${id}`)
-        const datosJSON = await datosCrudos.json()
+        const id = extraerParametro(location.href, 'id');
+        const datosCrudos = await fetch(`http://localhost:3001/productos/${id}`);
+        const datosJSON = await datosCrudos.json();
 
-        if (datosJSON.productos.length > 0){
-            const producto = datosJSON.productos[0]
+        if (datosJSON) {
             formulario.innerHTML = `
-            <form id="formulario" action="http://localhost:3001/productos" method="POST" class="flex items-center space-x-4">
-                <input type="text" name="nombre" class="px-4 py-2 border border-gray-300 rounded-md" placeholder="Nombre" value="${producto.nombre}">
-                <input type="text" name="marca" class="px-4 py-2 border border-gray-300 rounded-md" placeholder="Marca" value="${producto.marca}">
-                <input type="text" name="categoria" class="px-4 py-2 border border-gray-300 rounded-md" placeholder="Categoría" value="${producto.categoria}">
-                <input type="number" name="stock" class="px-4 py-2 border border-gray-300 rounded-md" placeholder="Stock" value="${producto.stock}">
-                <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Eliminar</button>
-            </form>
-            `
+                <form id="formulario" action="http://localhost:3001/productos" method="POST" class="flex items-center space-x-4">
+                    <input type="text" name="nombre" class="px-4 py-2 border border-gray-300 rounded-md" placeholder="Nombre" value="${datosJSON.nombre}" disabled>
+                    <input type="text" name="marca" class="px-4 py-2 border border-gray-300 rounded-md" placeholder="Marca" value="${datosJSON.marca}" disabled>
+                    <input type="text" name="categoria" class="px-4 py-2 border border-gray-300 rounded-md" placeholder="Categoría" value="${datosJSON.categoria}" disabled>
+                    <input type="number" name="stock" class="px-4 py-2 border border-gray-300 rounded-md" placeholder="Stock" value="${datosJSON.stock}" disabled>
+                    <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600">Eliminar</button>
+                </form>
+            `;
         } else {
-            console.log("Error")
-        }  
-    }catch (error) {
+            console.log("Producto no encontrado");
+        }
+    } catch (error) {
         console.log(error);
     }
 }

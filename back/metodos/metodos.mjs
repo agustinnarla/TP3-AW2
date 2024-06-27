@@ -1,9 +1,9 @@
 import { pool } from "../basededatos/coneccion.mjs";
 
-const traerProducto = async (req, res) => {
+const traerProductos = async (req, res) => {
     try {
         const respuesta = await pool.query("SELECT * FROM datos");
-        res.json(respuesta.rows);
+        res.json({ productos: respuesta.rows }); 
     } catch (err) {
         console.error(err.message);
         res.status(500).json({ error: 'Error al obtener los productos' });
@@ -70,4 +70,4 @@ const eliminarProducto = async (req, res) => {
     }
 };
 
-export {traerProductoEspecifico,traerProducto,agregarProducto,modificarProducto,eliminarProducto}
+export {traerProductoEspecifico,traerProductos,agregarProducto,modificarProducto,eliminarProducto}
