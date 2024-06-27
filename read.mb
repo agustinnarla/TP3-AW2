@@ -1,9 +1,0 @@
-Estoy utilizando variables de entorno para la conección a la base de datos 
-
-DB_USER=postgres
-DB_NAME=productos
-DB_PORT=5432
-DB_HOST= localhost
-DB_PASS=1809
-
-y la tabla de la base de datos es datos 
